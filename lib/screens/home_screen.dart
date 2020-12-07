@@ -15,31 +15,31 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: BottomNavBar(),
-      // providing a floating app bar for the application
-      body: SafeArea(
-        child: CustomScrollView(
-          slivers: <Widget>[
-            SliverAppBar(
-              title: Text(
-                'TamuTamu',
-                style: TextStyle(fontSize: 30.0),
-              ),
-              centerTitle: true,
-              actions: [Icon(Icons.shopping_cart), SizedBox(width: 10.0)],
-              // reveal appbar if user scrolls back up the List
-              floating: true,
-              pinned: true,
-              expandedHeight: 150.0,
-            ),
-            SliverList(
-              // delegate used for the building of items as they are scrolled onsreen
-              delegate: SliverChildBuilderDelegate(
-                (context, index) => ListTile(title: Text('Item #$index')),
-                childCount: 50,
-              ),
-            )
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        bottomNavigationBar: TabBar(
+          unselectedLabelColor: Colors.black54,
+          labelColor: Colors.blue,
+          tabs: [
+            Tab(icon: Icon(Icons.breakfast_dining), text: 'Breakfast'),
+            Tab(icon: Icon(Icons.lunch_dining), text: 'Lunch'),
+            Tab(icon: Icon(Icons.dinner_dining), text: 'Dinner'),
+          ],
+        ),
+        appBar: AppBar(
+          title: Text(
+            'TamuTamu',
+            style: TextStyle(fontSize: 24.0),
+          ),
+          centerTitle: true,
+          actions: [Icon(Icons.shopping_cart), SizedBox(width: 10.0)],
+        ),
+        body: TabBarView(
+          children: <Widget>[
+            Icon(Icons.breakfast_dining),
+            Icon(Icons.lunch_dining),
+            Icon(Icons.dinner_dining),
           ],
         ),
       ),
