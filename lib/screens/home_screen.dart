@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:tamutamu/models/food_category.dart';
-import 'package:tamutamu/widgets/bottom_nav_bar.dart';
 
 /// This Home class presents the app user with a home screen that consists of a
 /// row of Food Categories the user ca select and will be sent to the section
