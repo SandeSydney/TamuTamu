@@ -46,13 +46,13 @@ class _HomeState extends State<Home> {
               itemBuilder: (context, index) => ListTile(
                 title: Text('${FoodCategory().lunchMeals[index]}'),
               ),
-              itemCount: FoodCategory().breakfastMeals.length,
+              itemCount: FoodCategory().lunchMeals.length,
             ),
             ListView.builder(
               itemBuilder: (context, index) => ListTile(
                 title: Text('${FoodCategory().dinnerMeals[index]}'),
               ),
-              itemCount: FoodCategory().breakfastMeals.length,
+              itemCount: FoodCategory().dinnerMeals.length,
             ),
           ],
         ),
