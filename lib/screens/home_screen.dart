@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:tamutamu/models/food_category.dart';
 
 /// This Home class presents the app user with a home screen that consists of a
 /// row of Food Categories the user ca select and will be sent to the section
@@ -35,9 +36,24 @@ class _HomeState extends State<Home> {
         ),
         body: TabBarView(
           children: <Widget>[
-            Icon(Icons.breakfast_dining),
-            Icon(Icons.lunch_dining),
-            Icon(Icons.dinner_dining),
+            ListView.builder(
+              itemBuilder: (context, index) => ListTile(
+                title: Text('${FoodCategory().breakfastMeals[index]}'),
+              ),
+              itemCount: FoodCategory().breakfastMeals.length,
+            ),
+            ListView.builder(
+              itemBuilder: (context, index) => ListTile(
+                title: Text('${FoodCategory().lunchMeals[index]}'),
+              ),
+              itemCount: FoodCategory().breakfastMeals.length,
+            ),
+            ListView.builder(
+              itemBuilder: (context, index) => ListTile(
+                title: Text('${FoodCategory().dinnerMeals[index]}'),
+              ),
+              itemCount: FoodCategory().breakfastMeals.length,
+            ),
           ],
         ),
       ),
