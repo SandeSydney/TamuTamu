@@ -2,6 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:tamutamu/models/food_category.dart';
+import 'package:tamutamu/widgets/app_drawer.dart';
+import 'package:tamutamu/widgets/bottom_nav_bar.dart';
+import 'package:tamutamu/widgets/breakfast_builder.dart';
+import 'package:tamutamu/widgets/dinner_builder.dart';
+import 'package:tamutamu/widgets/lunch_builder.dart';
 
 /// This Home class presents the app user with a home screen that consists of a
 /// row of Food Categories the user ca select and will be sent to the section
@@ -17,15 +22,6 @@ class _HomeState extends State<Home> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        bottomNavigationBar: TabBar(
-          unselectedLabelColor: Colors.black54,
-          labelColor: Colors.blue,
-          tabs: [
-            Tab(icon: Icon(Icons.breakfast_dining), text: 'Breakfast'),
-            Tab(icon: Icon(Icons.lunch_dining), text: 'Lunch'),
-            Tab(icon: Icon(Icons.dinner_dining), text: 'Dinner'),
-          ],
-        ),
         appBar: AppBar(
           title: Text(
             'TamuTamu',
@@ -34,28 +30,15 @@ class _HomeState extends State<Home> {
           centerTitle: true,
           actions: [Icon(Icons.shopping_cart), SizedBox(width: 10.0)],
         ),
+        drawer: AppDrawer(),
         body: TabBarView(
           children: <Widget>[
-            ListView.builder(
-              itemBuilder: (context, index) => ListTile(
-                title: Text('${FoodCategory().breakfastMeals[index]}'),
-              ),
-              itemCount: FoodCategory().breakfastMeals.length,
-            ),
-            ListView.builder(
-              itemBuilder: (context, index) => ListTile(
-                title: Text('${FoodCategory().lunchMeals[index]}'),
-              ),
-              itemCount: FoodCategory().lunchMeals.length,
-            ),
-            ListView.builder(
-              itemBuilder: (context, index) => ListTile(
-                title: Text('${FoodCategory().dinnerMeals[index]}'),
-              ),
-              itemCount: FoodCategory().dinnerMeals.length,
-            ),
+            BreakfastBuilder(),
+            LunchBuilder(),
+            DinnerBuilder(),
           ],
         ),
+        bottomNavigationBar: BottomNavBar(),
       ),
     );
   }
