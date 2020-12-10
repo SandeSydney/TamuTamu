@@ -13,15 +13,31 @@ class AppDrawer extends StatelessWidget {
           ),
           ListTile(
             title: Text('Shopping Cart'),
+            onTap: () {
+              // close drawer after selection
+              Navigator.pop(context);
+            },
           ),
           ListTile(
             title: Text('How to use TamuTamu App'),
+            onTap: () {
+              // close drawer after selection
+              Navigator.pop(context);
+            },
           ),
           ListTile(
             title: Text('Terms and Conditions'),
+            onTap: () {
+              // close drawer after selection
+              Navigator.pop(context);
+            },
           ),
           ListTile(
             title: Text('About'),
+            onTap: () {
+              // close drawer after selection
+              Navigator.pop(context);
+            },
           ),
         ],
       ),
