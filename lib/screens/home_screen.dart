@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:tamutamu/models/food_category.dart';
+import 'package:tamutamu/screens/shopping_cart_screen.dart';
 import 'package:tamutamu/widgets/app_drawer.dart';
 import 'package:tamutamu/widgets/bottom_nav_bar.dart';
 import 'package:tamutamu/widgets/breakfast_builder.dart';
@@ -28,7 +28,17 @@ class _HomeState extends State<Home> {
             style: TextStyle(fontSize: 24.0),
           ),
           centerTitle: true,
-          actions: [Icon(Icons.shopping_cart), SizedBox(width: 10.0)],
+          actions: [
+            GestureDetector(
+              onTap: () {
+                // TODO: Push to the Shopping Cart Screen
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ShoppingCart()));
+              },
+              child: Icon(Icons.shopping_cart),
+            ),
+            SizedBox(width: 10.0)
+          ],
         ),
         drawer: AppDrawer(),
         body: TabBarView(
