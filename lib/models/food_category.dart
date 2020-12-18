@@ -9,6 +9,16 @@ class FoodCategory {
     'Porridge',
     'Bread',
     'Muffins',
+    'Tea',
+    'Coffee',
+    'Porridge',
+    'Bread',
+    'Muffins',
+    'Tea',
+    'Coffee',
+    'Porridge',
+    'Bread',
+    'Muffins',
   ];
 
   // meals in the lunch category
@@ -18,6 +28,10 @@ class FoodCategory {
     'Ugali',
     'Kienyeji',
     'Rice',
+    'Mokimo',
+    'Gidheri',
+    'Ugali',
+    'Kienyeji',
   ];
 
   // meals in the dinner category
