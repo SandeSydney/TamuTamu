@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tamutamu/screens/launch_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(MyApp());
 }
 
