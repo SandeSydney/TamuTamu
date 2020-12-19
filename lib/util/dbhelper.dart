@@ -23,6 +23,13 @@ class DbHelper {
             'CREATE TABLE meals(mealId INTEGER PRIMARY KEY,categoryId INTEGER,mealName TEXT,mealPrice TEXT,' +
                 'FOREIGN KEY(categoryId) REFERENCES mealCategory(categoryId))',
           );
+          // populate the database with meal categories
+          database.execute(
+              'INSERT INTO mealCategory(categoryId, categoryName)VALUES(1,"Breakfast")');
+          database.execute(
+              'INSERT INTO mealCategory(categoryId, categoryName)VALUES(2,"Lunch")');
+          database.execute(
+              'INSERT INTO mealCategory(categoryId, categoryName)VALUES(3,"Dinner")');
         },
         version: version,
       );
