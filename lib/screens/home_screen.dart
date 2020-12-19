@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:tamutamu/models/meal_category.dart';
+import 'package:tamutamu/models/meals.dart';
 import 'package:tamutamu/screens/shopping_cart_screen.dart';
+import 'package:tamutamu/util/dbhelper.dart';
 import 'package:tamutamu/widgets/app_drawer.dart';
 import 'package:tamutamu/widgets/bottom_nav_bar.dart';
 import 'package:tamutamu/widgets/breakfast_builder.dart';
@@ -51,5 +52,44 @@ class _HomeState extends State<Home> {
         bottomNavigationBar: BottomNavBar(),
       ),
     );
+  }
+}
+
+class MealsList extends StatefulWidget {
+  @override
+  _MealsListState createState() => _MealsListState();
+}
+
+class _MealsListState extends State<MealsList> {
+  DbHelper helper = DbHelper();
+  @override
+  Widget build(BuildContext context) {
+    showData();
+    return Container();
+  }
+
+  // display data from database
+  Future showData() async {
+    await helper.openDb();
+
+    // insert data to MealCategory
+    MealCategory mealCategoryList = MealCategory(
+      categoryId: 1,
+      categoryName: "breakfast",
+    );
+    int categoryId = await helper.insertMealCategory(mealCategoryList);
+
+    // insert data into Meals
+    Meals mealList = Meals(
+      mealId: 1,
+      categoryId: categoryId,
+      mealName: "Tea",
+      mealPrice: "50 Shillings",
+    );
+    int mealId = await helper.insertMeals(mealList);
+
+    // retrieve inserted data
+    print('Category Id: ' + categoryId.toString());
+    print('Meal Id: ' + mealId.toString());
   }
 }
