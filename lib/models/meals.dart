@@ -6,7 +6,7 @@ class Meals {
   String mealPrice;
   // meal Image
 
-  Meals(this.mealId, this.categoryId, this.mealName, this.mealPrice);
+  Meals({this.mealId, this.categoryId, this.mealName, this.mealPrice});
 
   // return a map with db data
   Map<String, dynamic> toMap() {

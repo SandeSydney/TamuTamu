@@ -4,7 +4,7 @@ class MealCategory {
   String categoryName;
 
   // constructor
-  MealCategory(this.categoryId, this.categoryName);
+  MealCategory({this.categoryId, this.categoryName});
 
   // return a map
   Map<String, dynamic> toMap() {
