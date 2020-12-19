@@ -60,4 +60,15 @@ class DbHelper {
         conflictAlgorithm: ConflictAlgorithm.replace);
     return mealId;
   }
+
+  // get meal categories from the Database
+  Future<List<MealCategory>> getMealCategories() async {
+    final List<Map<String, dynamic>> maps = await db.query('mealCategory');
+    return List.generate(maps.length, (i) {
+      return MealCategory(
+        categoryId: maps[i]['categoryId'],
+        categoryName: maps[i]['categoryName'],
+      );
+    });
+  }
 }
