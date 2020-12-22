@@ -42,13 +42,14 @@ class _HomeState extends State<Home> {
           ],
         ),
         drawer: AppDrawer(),
-        body: TabBarView(
-          children: <Widget>[
-            BreakfastBuilder(),
-            LunchBuilder(),
-            DinnerBuilder(),
-          ],
-        ),
+        body: MealsList(),
+        // body: TabBarView(
+        //   children: <Widget>[
+        //     BreakfastBuilder(),
+        //     LunchBuilder(),
+        //     DinnerBuilder(),
+        //   ],
+        // ),
         bottomNavigationBar: BottomNavBar(),
       ),
     );
@@ -62,34 +63,30 @@ class MealsList extends StatefulWidget {
 
 class _MealsListState extends State<MealsList> {
   DbHelper helper = DbHelper();
+  // List of meal categories
+  List<MealCategory> mealCategoriesList;
   @override
   Widget build(BuildContext context) {
     showData();
-    return Container();
+    return ListView.builder(
+      itemCount: (mealCategoriesList != null) ? mealCategoriesList.length : 0,
+      itemBuilder: (context, int index) {
+        return ListTile(
+          title: Text(mealCategoriesList[index].categoryName),
+        );
+      },
+    );
   }
 
   // display data from database
   Future showData() async {
     await helper.openDb();
 
-    // insert data to MealCategory
-    MealCategory mealCategoryList = MealCategory(
-      categoryId: 1,
-      categoryName: "breakfast",
-    );
-    int categoryId = await helper.insertMealCategory(mealCategoryList);
-
-    // insert data into Meals
-    Meals mealList = Meals(
-      mealId: 1,
-      categoryId: categoryId,
-      mealName: "Tea",
-      mealPrice: "50 Shillings",
-    );
-    int mealId = await helper.insertMeals(mealList);
-
-    // retrieve inserted data
-    print('Category Id: ' + categoryId.toString());
-    print('Meal Id: ' + mealId.toString());
+    // get the meal categories from the database
+    mealCategoriesList = await helper.getMealCategories();
+    // show state when List Changes
+    setState(() {
+      mealCategoriesList = mealCategoriesList;
+    });
   }
 }
